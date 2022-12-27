@@ -147,17 +147,31 @@ We will be using a [MySQL role developed by geerlingguy](https://galaxy.ansible.
 git init
 git pull https://github.com/<your-name>/ansible-config-mgt.git
 git remote add origin https://github.com/<your-name>/ansible-config-mgt.git
+git commit -m "Commit new role files "
 git branch roles-feature
 git switch roles-feature
 ```
-Inside roles directory create your new MySQL role with ansible-galaxy install geerlingguy.mysql and rename the folder to mysql
+Create a new  PAT (Personal Access Token) in github.com
+Now `git pull` inside your Git repository
 
-mv geerlingguy.mysql/ mysql
-Read README.md file, and edit roles configuration to use correct credentials for MySQL required for the tooling website.
+Provide a username and the generated token as a password
+
+
+Inside `roles` directory create your new `MySQL` role with 
+`sudo ansible-galaxy install geerlingguy.mysql` and rename the folder to mysql
+
+`mv geerlingguy.mysql/ mysql`
+
+Read `README.md` file, and edit roles configuration to use correct credentials for MySQL required for the `tooling website`.
+
+![mysql-default-conf](./images-project13/mysql-default-config.PNG)
 
 Now it is time to upload the changes into your GitHub:
 
+```
 git add .
 git commit -m "Commit new role files into GitHub"
 git push --set-upstream origin roles-feature
+```
+
 Now, if you are satisfied with your codes, you can create a Pull Request and merge it to main branch on GitHub.
