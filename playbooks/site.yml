@@ -1,0 +1,40 @@
+---
+- hosts: webservers
+  name: Webserver assignment
+  import_playbook: ../static-assignments/webservers.yml
+
+
+- name: inport database
+  host: webservers
+  import_playbook: ../static-assignments/db.yml
+
+- name: Loadbalancers assignment
+  hosts: lb
+  import_playbook: ../static-assignments/loadbalancers.yml
+  when: load_balancer_is_required 
+
+
+
+
+##- hosts: all
+##- import_playbook: ../static-assignments/common.yml
+##- import_playbook: ../static-assignments/common-del.yml
+
+#- hosts: uat-webservers
+#- import_playbook: ../static-assignments/uat-webservers.yml
+
+#- hosts: uat-webservers
+#- import_playbook: ../static-assignments/common-del-apache.yml
+
+# # - name: Addeing dynamic variables
+#   hosts: all 
+#   tasks:
+#     import_playbook: ../static-assignments/common.yml 
+#     #include_playbook: ../dynamic-assignments/env-vars.yml
+#   tags:
+#     - always
+
+
+
+
+
